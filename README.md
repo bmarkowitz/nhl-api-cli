@@ -9,6 +9,7 @@ I am a beginner and this is most definitely a work-in-progress. Stay tuned.
 ## Current Features
 
 - Displays a basic entry-point menu
+- Access team info from /teams/ID endpoint
 
 ## Short-Term Features
 - Access a list of all teams
