@@ -8,6 +8,7 @@ from functions.menus import menu, teams_menu
 from functions.data import teams_dict
 
 def nhl_cli():
+    active = True # Status for displaying sub- or returning to main
     print('Welcome to the NHL API CLI.\n')
     while True:
         menu()
@@ -15,15 +16,18 @@ def nhl_cli():
         choice = input(">> ")
 
         if choice == '1':
-            active = True
             while active:
                 teams_menu()
                 choice = input(">> ")
                 if choice == '1':
                     id_str = input('Enter team IDs separated by commas: ')
                     display_obj(t.get_teams(id_str))
+                elif choice == '2':
+                    id_str = input('Enter team IDs separated by commas: ')
+                    display_obj(t.get_prev_game(id_str))
                 else:
                     active = False
+                
         elif choice == '0':
             exit()
         else:
@@ -31,4 +35,3 @@ def nhl_cli():
 
 if __name__ == '__main__':
     nhl_cli()
-        
