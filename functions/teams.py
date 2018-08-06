@@ -38,6 +38,7 @@ def get_prev_game(id_str):
                 'date': game_date,
                 'finalPeriod': prev_game_line['dates'][0]['games'][0]['linescore']['currentPeriod'],
                 'startTime': games_obj['gameDate'][11:19],
+                'location': games_obj['venue']['name'],
                 'awayTeam': games_obj['teams']['away']['team']['name'],
                 'awayGoals': games_obj['teams']['away']['score'],
                 'homeTeam': games_obj['teams']['home']['team']['name'],
@@ -60,6 +61,7 @@ def get_next_game(id_str):
                 'teamQueried': f'{id_} ({teams_dict[id_]})',
                 'date': game_date,
                 'startTime': games_obj['gameDate'][11:19],
+                'location': games_obj['venue']['name'],
                 'awayTeam': games_obj['teams']['away']['team']['name'],
                 'homeTeam': games_obj['teams']['home']['team']['name'],
             }
