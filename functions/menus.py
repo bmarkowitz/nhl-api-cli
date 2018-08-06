@@ -9,4 +9,5 @@ def teams_menu():
     print('// Teams Menu: ')
     print('1. Display basic team info')
     print('2. Previous team game')
+    print('3. Next team game')
     print('0. Return to main menu')

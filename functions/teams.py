@@ -1,7 +1,10 @@
-import requests
-import json
-from functions.session import s
-from functions.data import teams_dict
+try:
+    import requests
+    import json
+    from functions.session import s
+    from functions.data import teams_dict
+except ImportError:
+    print('Imports failed')
 
 """ Functions to handle fetching team data """
 
@@ -39,6 +42,26 @@ def get_prev_game(id_str):
                 'awayGoals': games_obj['teams']['away']['score'],
                 'homeTeam': games_obj['teams']['home']['team']['name'],
                 'homeGoals': games_obj['teams']['home']['score'],
+            }
+            results_list.append(result_obj)
+        except KeyError:
+            continue
+    return results_list
+
+def get_next_game(id_str):
+    id_list = id_str.split(',')
+    results_list = []
+    for id_ in id_list:
+        next_game_data = json.loads(s.get(base_url + 'teams/' + id_ + '?expand=team.schedule.next').text)
+        try:
+            games_obj = next_game_data['teams'][0]['nextGameSchedule']['dates'][0]['games'][0]
+            game_date = games_obj['gameDate'][0:10]
+            result_obj = {
+                'teamQueried': f'{id_} ({teams_dict[id_]})',
+                'date': game_date,
+                'startTime': games_obj['gameDate'][11:19],
+                'awayTeam': games_obj['teams']['away']['team']['name'],
+                'homeTeam': games_obj['teams']['home']['team']['name'],
             }
             results_list.append(result_obj)
         except KeyError:
