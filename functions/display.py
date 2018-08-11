@@ -1,8 +1,15 @@
 def display_obj(obj_list):
     for obj in obj_list:
-        if type(obj) == dict:
+        for key in obj:
+            print(f'{key}: {obj[key]}')
+        print('==================================================')
+
+def display_roster(roster_list):
+    for lst in roster_list:
+        for obj in lst:
             for key in obj:
                 print(f'{key}: {obj[key]}')
+            print('=========================')
+        if roster_list.index(lst) < len(roster_list) - 1:
             print('==================================================')
-        else:
-            display_obj(obj)
+        

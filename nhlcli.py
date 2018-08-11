@@ -4,7 +4,7 @@
 try:
     import requests
     import functions.teams as t
-    from functions.display import display_obj
+    from functions.display import display_obj, display_roster
     from functions.menus import menu, teams_menu
     from functions.data import teams_dict
 except ImportError:
@@ -26,7 +26,7 @@ def nhl_cli():
                     display_obj(t.get_teams(id_str))
                 elif choice == '2':
                     id_str = input('Enter team IDs separated by commas: ')
-                    display_obj(t.get_team_roster(id_str))
+                    display_roster(t.get_team_roster(id_str))
                 elif choice == '3':
                     id_str = input('Enter team IDs separated by commas: ')
                     display_obj(t.get_prev_game(id_str))    
