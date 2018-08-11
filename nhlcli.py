@@ -11,7 +11,6 @@ except ImportError:
     print('Imports failed')
 
 def nhl_cli():
-    active = True # Status for displaying sub- or returning to main
     print('Welcome to the NHL API CLI.\n')
     while True:
         menu()
@@ -19,7 +18,7 @@ def nhl_cli():
         choice = input(">> ")
 
         if choice == '1':
-            while active:
+            while True:
                 teams_menu()
                 choice = input(">> ")
                 if choice == '1':
@@ -27,12 +26,15 @@ def nhl_cli():
                     display_obj(t.get_teams(id_str))
                 elif choice == '2':
                     id_str = input('Enter team IDs separated by commas: ')
-                    display_obj(t.get_prev_game(id_str))
+                    display_obj(t.get_team_roster(id_str))
                 elif choice == '3':
                     id_str = input('Enter team IDs separated by commas: ')
-                    display_obj(t.get_next_game(id_str))                    
+                    display_obj(t.get_prev_game(id_str))    
+                elif choice == '4':
+                    id_str = input('Enter team IDs separated by commas: ')
+                    display_obj(t.get_next_game(id_str))                  
                 else:
-                    active = False
+                    break
                 
         elif choice == '0':
             exit()

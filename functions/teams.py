@@ -69,3 +69,29 @@ def get_next_game(id_str):
         except KeyError:
             continue
     return results_list
+
+def get_team_roster(id_str):
+    id_list = id_str.split(',')
+    results_list = []
+    for id_ in id_list:
+        team_list = []
+        team_roster_data = json.loads(s.get(base_url + 'teams/' + id_ + '?expand=team.roster').text)
+        try:
+            roster = team_roster_data['teams'][0]['roster']['roster']
+            for player in roster:
+                player_name = player['person']['fullName']
+                try:
+                    player_num = player['jerseyNumber']
+                except KeyError:
+                    player_num = '00'
+                player_pos = player['position']['code']
+                player_obj = {
+                    'number': player_num,
+                    'fullName':player_name,
+                    'position': player_pos
+                }
+                team_list.append(player_obj)
+        except KeyError:
+            continue
+        results_list.append(team_list)
+    return results_list
