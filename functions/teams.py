@@ -71,13 +71,12 @@ def get_next_game(id_str):
     return results_list
 
 def get_team_roster(id_str):
-    id_list = id_str.split(',')
     results_list = []
-    for id_ in id_list:
+    team_roster_data = json.loads(s.get(base_url + 'teams?expand=team.roster&teamId=' + id_str).text)
+    for team in team_roster_data['teams']:
         team_list = []
-        team_roster_data = json.loads(s.get(base_url + 'teams/' + id_ + '?expand=team.roster').text)
         try:
-            roster = team_roster_data['teams'][0]['roster']['roster']
+            roster = team['roster']['roster']
             for player in roster:
                 player_name = player['person']['fullName']
                 try:

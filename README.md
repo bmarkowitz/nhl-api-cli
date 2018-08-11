@@ -12,6 +12,7 @@ I am a beginner and this is most definitely a work-in-progress. Stay tuned.
 - Access team info from /teams/ID 
 - View basic info for team's previous game
 - View basic info for team's next game
+- View a team's current active roster
 
 ## Short-Term Features
 - Access a list of all teams
