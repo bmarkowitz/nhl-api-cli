@@ -26,12 +26,12 @@ def get_teams(id_str):
 def get_prev_game(id_str):
     id_list = id_str.split(',')
     results_list = []
-    for id_ in id_list:
-        prev_game_data = json.loads(s.get(base_url + 'teams/' + id_ + '?expand=team.schedule.previous').text)
-        prev_game_line = base_url + id_ + '&date='
+    prev_game_data = json.loads(s.get(base_url + 'teams?expand=team.schedule.previous&teamId=' + id_str).text)
+    for team in prev_game_data['teams']:
+        id_ = str(team['id'])
         try:
-            games_obj = prev_game_data['teams'][0]['previousGameSchedule']['dates'][0]['games'][0]
-            game_date = games_obj['gameDate'][0:10]
+            games_obj = team['previousGameSchedule']['dates'][0]['games'][0]
+            game_date = team['previousGameSchedule']['dates'][0]['date']
             prev_game_line = json.loads(s.get(base_url + linescore_url + id_ + '&date=' + game_date).text)
             result_obj = {
                 'teamQueried': f'{id_} ({teams_dict[id_]})',
@@ -52,10 +52,11 @@ def get_prev_game(id_str):
 def get_next_game(id_str):
     id_list = id_str.split(',')
     results_list = []
-    for id_ in id_list:
-        next_game_data = json.loads(s.get(base_url + 'teams/' + id_ + '?expand=team.schedule.next').text)
+    next_game_data = json.loads(s.get(base_url + 'teams?expand=team.schedule.next&teamId=' + id_str).text)
+    for team in next_game_data['teams']:
+        id_ = str(team['id'])
         try:
-            games_obj = next_game_data['teams'][0]['nextGameSchedule']['dates'][0]['games'][0]
+            games_obj = team['nextGameSchedule']['dates'][0]['games'][0]
             game_date = games_obj['gameDate'][0:10]
             result_obj = {
                 'teamQueried': f'{id_} ({teams_dict[id_]})',
