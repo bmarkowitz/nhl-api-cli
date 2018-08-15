@@ -10,7 +10,7 @@ players_url = 'https://statsapi.web.nhl.com/api/v1/teams?expand=team.roster'
 
 def get_players(name_str):
     try:
-        first, last = name_str.split(' ')
+        first, last = name_str.split(' ') # Tries to split input into first and last name, then uppercase their leading characters
         first = first[0].upper() + first[1:]
         last = last[0].upper() + last[1:]
         name_str = first + ' ' + last

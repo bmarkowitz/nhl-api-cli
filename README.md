@@ -13,6 +13,7 @@ I am a beginner and this is most definitely a work-in-progress. Stay tuned.
 - View basic info for team's previous game
 - View basic info for team's next game
 - View a team's current active roster
+- Search for an active player in the league
 
 ## Short-Term Features
 - Access a list of all teams
