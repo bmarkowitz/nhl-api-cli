@@ -1,8 +1,9 @@
 def display_obj(obj_list):
-    for obj in obj_list:
-        for key in obj:
-            print(f'{key}: {obj[key]}')
-        print('==================================================')
+    if obj_list:
+        for obj in obj_list:
+            for key in obj:
+                print(f'{key}: {obj[key]}')
+            print('==================================================')
 
 def display_roster(roster_list):
     for lst in roster_list:

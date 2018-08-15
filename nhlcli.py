@@ -4,8 +4,9 @@
 try:
     import requests
     import functions.teams as t
+    import functions.players as p
     from functions.display import display_obj, display_roster
-    from functions.menus import menu, teams_menu
+    from functions.menus import menu, teams_menu, players_menu
     from functions.data import teams_dict
 except ImportError:
     print('Imports failed')
@@ -33,6 +34,15 @@ def nhl_cli():
                 elif choice == '4':
                     id_str = input('Enter team IDs separated by commas: ')
                     display_obj(t.get_next_game(id_str))                  
+                else:
+                    break
+        elif choice == '2':
+            while True:
+                players_menu()
+                choice = input(">> ")
+                if choice == '1':
+                    name_str = input('Enter player name: ')
+                    display_obj(p.get_players(name_str))               
                 else:
                     break
                 
