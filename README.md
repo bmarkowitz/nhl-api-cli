@@ -1,24 +1,8 @@
-# NHL API CLI
+# nhlinfo, v2
 
 A terminal interface to interact with the NHL API, which has been documented [here](https://gitlab.com/dword4/nhlapi) by [Drew Hynes](https://gitlab.com/dword4).
 
-## Disclaimer
-
-I am a beginner and this is most definitely a work-in-progress. Stay tuned.
-
-## Current Features
-
-- Displays a basic entry-point menu
-- Access team info from /teams/ID 
-- View basic info for team's previous game
-- View basic info for team's next game
-- View a team's current active roster
-- Search for an active player in the league
-
-## Short-Term Features
-- Access a list of all teams
-- View each team's current roster
-- Search for a player and view their information
+This is v2 which will be an actual Python API to easily access the data provided by the NHL API.
 
 ## Dependencies
 
