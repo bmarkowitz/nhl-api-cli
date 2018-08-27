@@ -12,3 +12,11 @@ def roster(team_id):
     # Parse the data
     roster = data['teams'][0]['roster']['roster']
     return roster
+
+def player(player_id):
+    # Get the data
+    data = nhlinfo.data.get_player(player_id)
+    
+    # Parse the data
+    player = data['people']
+    return player
